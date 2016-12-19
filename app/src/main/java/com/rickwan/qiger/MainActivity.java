@@ -16,15 +16,11 @@ public class MainActivity extends AppCompatActivity implements EnvironmentView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        test();
-    }
-
-    private void test() {
 
         envieronmentPressenterImp = new EnvieronmentPressenterImp(this);
         envieronmentPressenterImp.getWeatherData("1a0c3b7345c16", "成都", "四川");
-
     }
+
 
     @Override
     public void showProgress() {
