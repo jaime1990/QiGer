@@ -36,7 +36,6 @@ public class EnvironmentModelImp implements EnvironmentModel {
 
                         if (mLisenter != null)
                             mLisenter.environmentLoadingSuccess(environment);
-
                     }
                 }, new Action1<Throwable>() {
                     @Override
