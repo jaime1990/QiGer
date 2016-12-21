@@ -1,11 +1,8 @@
 package com.rickwan.qiger.mvp.pesenter;
 
-import android.util.Log;
-
 import com.rickwan.qiger.beans.Environment;
 import com.rickwan.qiger.mvp.model.EnvironmentModelImp;
 import com.rickwan.qiger.mvp.view.EnvironmentView;
-import com.rickwan.qiger.utils.LogUtils;
 
 /**
  * author wanqiang

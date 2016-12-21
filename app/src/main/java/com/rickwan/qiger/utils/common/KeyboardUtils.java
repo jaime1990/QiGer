@@ -1,4 +1,4 @@
-package com.rickwan.qiger.utils;
+package com.rickwan.qiger.utils.common;
 
 import android.content.Context;
 import android.util.Log;

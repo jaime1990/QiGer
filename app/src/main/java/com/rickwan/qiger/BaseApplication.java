@@ -2,7 +2,7 @@ package com.rickwan.qiger;
 
 import android.app.Application;
 
-import com.rickwan.qiger.utils.LogUtils;
+import com.rickwan.qiger.utils.common.LogUtils;
 
 /**
  * author 万强

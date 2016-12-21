@@ -1,4 +1,4 @@
-package com.rickwan.qiger.utils;
+package com.rickwan.qiger.utils.common;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
