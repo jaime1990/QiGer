@@ -4,20 +4,16 @@ import android.text.TextUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.rickwan.qiger.BuildConfig;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Cookie;
-import okhttp3.CookieJar;
-import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -28,24 +24,16 @@ public class NetworkRequest {
 
     public static Interfaces getInstance() {
         if (service == null) {
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .addNetworkInterceptor(intercepeter)
-                    .cookieJar(new CookieJar() {
-                        private final HashMap<HttpUrl, List<Cookie>> cookieStore = new HashMap<>();
 
-                        @Override
-                        public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
-                            cookieStore.put(url, cookies);
-                        }
-
-                        @Override
-                        public List<Cookie> loadForRequest(HttpUrl url) {
-                            List<Cookie> cookies = cookieStore.get(url);
-                            return cookies != null ? cookies : new ArrayList<Cookie>();
-                        }
-                    }).readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .build();
+            OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder();
+            if (BuildConfig.DEBUG) {
+                HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                okHttpBuilder.addNetworkInterceptor(httpLoggingInterceptor);
+            }
+            okHttpBuilder.readTimeout(60, TimeUnit.SECONDS);
+            okHttpBuilder.connectTimeout(60, TimeUnit.SECONDS);
+            okHttpBuilder.addNetworkInterceptor(intercepeter);
 
             GsonBuilder builder = new GsonBuilder();
             builder.setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
@@ -53,7 +41,7 @@ public class NetworkRequest {
 
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Interfaces.BASE_URL)
-                    .client(okHttpClient)
+                    .client(okHttpBuilder.build())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
