@@ -34,15 +34,18 @@ public class EnvironmentModelImp implements EnvironmentModel {
                     @Override
                     public void call(Environment environment) {
 
-                        if (mLisenter != null)
+                        if (mLisenter != null) {
                             mLisenter.environmentLoadingSuccess(environment);
+                        }
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
 
-                        if (mLisenter != null)
+                        if (mLisenter != null) {
                             mLisenter.environmentLoadingFailure("");
+                        }
+
                     }
                 });
 

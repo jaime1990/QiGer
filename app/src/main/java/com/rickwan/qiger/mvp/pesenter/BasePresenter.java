@@ -12,7 +12,7 @@ public class BasePresenter {
     /**
      * RxJava取消注册，以避免内存泄露
      */
-    public void onUnsubscribe() {
+    public void unSubscribe() {
         if (mCompositeSubscription != null && mCompositeSubscription.hasSubscriptions()) {
             mCompositeSubscription.unsubscribe();
         }

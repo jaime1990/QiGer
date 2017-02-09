@@ -1,44 +1,37 @@
 package com.rickwan.qiger;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.rickwan.qiger.base.BaseActivity;
 import com.rickwan.qiger.beans.Environment;
+import com.rickwan.qiger.mvp.pesenter.BasePresenter;
 import com.rickwan.qiger.mvp.pesenter.EnvieronmentPressenterImp;
 import com.rickwan.qiger.mvp.view.EnvironmentView;
-import com.rickwan.qiger.utils.common.LogUtils;
 import com.rickwan.qiger.utils.common.ToastUtils;
-import com.tencent.connect.share.QQShare;
-import com.tencent.connect.share.QzoneShare;
-import com.tencent.tauth.IUiListener;
-import com.tencent.tauth.Tencent;
-import com.tencent.tauth.UiError;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements EnvironmentView {
+public class MainActivity extends BaseActivity implements EnvironmentView {
 
 
     @BindView(R.id.data_tv)
     TextView dataTv;
 
-    private EnvieronmentPressenterImp envieronmentPressenterImp;
+    EnvieronmentPressenterImp envieronmentPressenterImp;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    protected int getLayoutID() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected BasePresenter getPresenter() {
 
         envieronmentPressenterImp = new EnvieronmentPressenterImp(this);
         envieronmentPressenterImp.getWeatherData("1a0c3b7345c16", "成都", "四川");
-
+        return envieronmentPressenterImp;
     }
 
 
@@ -70,40 +63,8 @@ public class MainActivity extends AppCompatActivity implements EnvironmentView {
                         "\n更新时间：" + data.updateTime);
             }
         }
-//        shareToQQ();
-//        shareToQQZone();
-    }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        envieronmentPressenterImp.onUnsubscribe();
     }
 
 
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Tencent.onActivityResultData(requestCode, resultCode, data, null);
-    }
-
-    private IUiListener iUiListener = new IUiListener() {
-        @Override
-        public void onComplete(Object o) {
-
-            LogUtils.i("onComplete");
-        }
-
-        @Override
-        public void onError(UiError uiError) {
-            LogUtils.i("onError");
-        }
-
-        @Override
-        public void onCancel() {
-            LogUtils.i("onCancel");
-        }
-    };
 }
