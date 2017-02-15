@@ -1,4 +1,4 @@
-package com.rickwan.qiger.net;
+package com.rickwan.qiger.common.net;
 
 import android.text.TextUtils;
 
@@ -26,15 +26,15 @@ public class NetworkRequest {
         if (service == null) {
 
             OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder();
-            if (BuildConfig.DEBUG) {
-                HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-                okHttpBuilder.addNetworkInterceptor(httpLoggingInterceptor);
-            }
+
+            okHttpBuilder.addNetworkInterceptor(intercepeter);
+//            if (BuildConfig.DEBUG) {
+//                HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+//                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//                okHttpBuilder.addInterceptor(httpLoggingInterceptor);
+//            }
             okHttpBuilder.readTimeout(60, TimeUnit.SECONDS);
             okHttpBuilder.connectTimeout(60, TimeUnit.SECONDS);
-            okHttpBuilder.addNetworkInterceptor(intercepeter);
-
             GsonBuilder builder = new GsonBuilder();
             builder.setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             Gson gson = builder.create();

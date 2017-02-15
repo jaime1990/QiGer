@@ -1,4 +1,6 @@
-package com.rickwan.qiger.mvp.pesenter;
+package com.rickwan.qiger.common.ui.mvp.pesenter;
+
+import com.rickwan.qiger.base.BasePresenter;
 
 /**
  * author wanqiang

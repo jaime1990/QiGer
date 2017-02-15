@@ -1,8 +1,8 @@
-package com.rickwan.qiger.mvp.pesenter;
+package com.rickwan.qiger.common.ui.mvp.pesenter;
 
 import com.rickwan.qiger.beans.Environment;
-import com.rickwan.qiger.mvp.model.EnvironmentModelImp;
-import com.rickwan.qiger.mvp.view.EnvironmentView;
+import com.rickwan.qiger.common.ui.mvp.model.EnvironmentModelImp;
+import com.rickwan.qiger.common.ui.mvp.view.EnvironmentView;
 
 /**
  * author wanqiang

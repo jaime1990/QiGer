@@ -1,4 +1,4 @@
-package com.rickwan.qiger.mvp.pesenter;
+package com.rickwan.qiger.base;
 
 
 import rx.Subscription;

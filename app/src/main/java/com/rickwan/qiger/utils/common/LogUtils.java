@@ -3,6 +3,7 @@ package com.rickwan.qiger.utils.common;
 import android.text.TextUtils;
 
 import com.orhanobut.logger.Logger;
+import com.rickwan.qiger.BuildConfig;
 
 /**
  * author 万强
@@ -13,7 +14,7 @@ public class LogUtils {
 
     private static String TAG = "TAG";
 
-    private static boolean DEBUG = false;
+    private static boolean DEBUG = BuildConfig.DEBUG;
 
     private static LogUtils logUtils;
 

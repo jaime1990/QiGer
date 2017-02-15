@@ -9,10 +9,10 @@ import com.rickwan.qiger.utils.common.LogUtils;
  * date 16/12/20 下午12:01
  * desc ${TODO}
  */
-public class BaseApplication extends Application {
+public class QigerApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        LogUtils.getInstance().setDeBugModle(true);
+//        LogUtils.getInstance().setDeBugModle(true);
     }
 }

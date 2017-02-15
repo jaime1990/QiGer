@@ -1,4 +1,4 @@
-package com.rickwan.qiger.mvp.model;
+package com.rickwan.qiger.common.ui.mvp.model;
 
 import rx.Subscription;
 

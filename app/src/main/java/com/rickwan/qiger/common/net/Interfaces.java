@@ -1,4 +1,4 @@
-package com.rickwan.qiger.net;
+package com.rickwan.qiger.common.net;
 
 import com.rickwan.qiger.beans.Environment;
 

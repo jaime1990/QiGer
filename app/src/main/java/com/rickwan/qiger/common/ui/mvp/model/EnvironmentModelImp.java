@@ -1,7 +1,7 @@
-package com.rickwan.qiger.mvp.model;
+package com.rickwan.qiger.common.ui.mvp.model;
 
 import com.rickwan.qiger.beans.Environment;
-import com.rickwan.qiger.net.NetworkRequest;
+import com.rickwan.qiger.common.net.NetworkRequest;
 
 import rx.Observable;
 import rx.Subscription;

@@ -1,17 +1,19 @@
-package com.rickwan.qiger;
+package com.rickwan.qiger.common.ui;
 
 import android.widget.TextView;
 
+import com.rickwan.qiger.R;
 import com.rickwan.qiger.base.BaseActivity;
 import com.rickwan.qiger.beans.Environment;
-import com.rickwan.qiger.mvp.pesenter.BasePresenter;
-import com.rickwan.qiger.mvp.pesenter.EnvieronmentPressenterImp;
-import com.rickwan.qiger.mvp.view.EnvironmentView;
+import com.rickwan.qiger.base.BasePresenter;
+import com.rickwan.qiger.common.ui.mvp.pesenter.EnvieronmentPressenterImp;
+import com.rickwan.qiger.common.ui.mvp.view.EnvironmentView;
 import com.rickwan.qiger.utils.common.ToastUtils;
 
 import java.util.List;
 
 import butterknife.BindView;
+import cn.magicbeans.android.ipmanager.utils.MBShakeUtils;
 
 public class MainActivity extends BaseActivity implements EnvironmentView {
 
@@ -24,6 +26,11 @@ public class MainActivity extends BaseActivity implements EnvironmentView {
     @Override
     protected int getLayoutID() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView() {
+
     }
 
     @Override
@@ -65,6 +72,25 @@ public class MainActivity extends BaseActivity implements EnvironmentView {
         }
 
     }
+
+
+
+    MBShakeUtils shakeUtils;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        shakeUtils = new MBShakeUtils(this);
+        shakeUtils.init();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        shakeUtils.unRegister();
+    }
+
+
 
 
 }

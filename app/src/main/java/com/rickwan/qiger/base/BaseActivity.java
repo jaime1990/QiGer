@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.rickwan.qiger.mvp.pesenter.BasePresenter;
-
 import butterknife.ButterKnife;
 
 /**
@@ -21,6 +19,7 @@ public abstract  class BaseActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
+        initView();
         ButterKnife.bind(this);
         mPresenter = getPresenter();
     }
@@ -34,6 +33,8 @@ public abstract  class BaseActivity extends Activity {
     }
 
     protected abstract int getLayoutID();
+
+    protected abstract void initView();
 
     protected abstract BasePresenter getPresenter();
 }

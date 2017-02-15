@@ -1,4 +1,4 @@
-package com.rickwan.qiger.mvp.view;
+package com.rickwan.qiger.common.ui.mvp.view;
 
 import com.rickwan.qiger.beans.Environment;
 
